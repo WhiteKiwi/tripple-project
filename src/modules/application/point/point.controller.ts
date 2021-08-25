@@ -28,6 +28,6 @@ export class PointController {
 	@HttpCode(HttpStatus.NO_CONTENT)
 	@Post()
 	async addPoint(@Body() addPointDto: AddPointDto) {
-		const point = await this.pointApplicationService.addPoint(addPointDto)
+		await this.pointApplicationService.addPoint(addPointDto)
 	}
 }

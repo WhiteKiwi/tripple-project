@@ -55,7 +55,7 @@ export class PointRepository {
 		if (isNaN(userPoint)) {
 			userPoint = await this.getUserPointFromDB(userId)
 		}
-		return Number(userPoint)
+		return userPoint
 	}
 
 	private async getUserPointFromDB(userId: string) {

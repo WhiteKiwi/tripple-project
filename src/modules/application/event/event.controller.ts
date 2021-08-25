@@ -12,7 +12,7 @@ export class EventController {
 	) {}
 
 	@HttpCode(HttpStatus.NO_CONTENT)
-	@Post('events')
+	@Post()
 	async handleEvent(@Body() eventDto: EventDto) {
 		await this.eventApplicationService.handleEvent(eventDto)
 	}

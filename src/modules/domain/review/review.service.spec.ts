@@ -1,7 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
 
-import { RedisModule, RedisService } from '@modules/core'
-
 import { getRepository, Repository } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 

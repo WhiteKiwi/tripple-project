@@ -1,4 +1,4 @@
-import { IsEnum, IsOptional, IsString, IsUUID } from 'class-validator'
+import { IsOptional, IsString, IsUUID } from 'class-validator'
 
 export enum EventTypeEnum {
 	REVIEW = 'REVIEW',
@@ -13,10 +13,10 @@ export enum ActionTypeEnum {
 export type ActionType = keyof typeof ActionTypeEnum
 
 export class EventDto {
-	@IsEnum({ enum: EventTypeEnum })
+	@IsString()
 	type!: EventType
 
-	@IsEnum({ enum: ActionTypeEnum })
+	@IsString()
 	action!: ActionType
 
 	@IsUUID()
