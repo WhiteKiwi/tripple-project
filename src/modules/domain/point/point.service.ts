@@ -8,13 +8,4 @@ export class PointService {
 		// TODO: point transaction 생성
 		// TODO: redis에 user point 갱신
 	}
-
-	// TODO: repository로 분리
-	async findTransactionsByReviewId({
-		reviewId,
-	}: {
-		reviewId: string
-	}): Promise<ReviewPointTransaction[]> {
-		return []
-	}
 }

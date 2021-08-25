@@ -1,17 +1,16 @@
 import { Injectable } from '@nestjs/common'
-import { InjectRepository } from '@nestjs/typeorm'
 
-import { Review } from 'src/typeorm/entities'
-import { Repository } from 'typeorm'
-
+import { Review } from '../../../typeorm/entities'
 import { PointService } from '../point'
+import { PointRepository } from '../point/point.repository'
 import { CreateReviewDto, DeleteReviewDto, UpdateReviewDto } from './review.dto'
+import { ReviewRepository } from './review.repository'
 
 @Injectable()
 export class ReviewService {
 	constructor(
-		@InjectRepository(Review)
-		private readonly reviewRepository: Repository<Review>,
+		private readonly reviewRepository: ReviewRepository,
+		private readonly pointRepository: PointRepository,
 		private readonly pointService: PointService,
 	) {}
 
@@ -28,7 +27,7 @@ export class ReviewService {
 		)
 
 		// 리뷰 생성
-		await this.reviewRepository.save({
+		await this.reviewRepository.create({
 			id: createReviewDto.reviewId,
 			userId: createReviewDto.userId,
 			placeId: createReviewDto.placeId,
@@ -80,7 +79,7 @@ export class ReviewService {
 		if (!existReview) throw new Error('404')
 
 		// review 삭제
-		await this.reviewRepository.softDelete(deleteReviewDto.reviewId)
+		await this.reviewRepository.delete(deleteReviewDto.reviewId)
 
 		// 포인트 계산
 		const pointAmount = await this.calculatePointAmountAtDeleted(
@@ -151,7 +150,7 @@ export class ReviewService {
 		deleteReviewDto: DeleteReviewDto,
 	): Promise<number> {
 		const pointTransactions =
-			await this.pointService.findTransactionsByReviewId({
+			await this.pointRepository.findTransactionsByReviewId({
 				reviewId: deleteReviewDto.reviewId,
 			})
 		const pointAmount = pointTransactions.reduce(
