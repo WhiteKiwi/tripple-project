@@ -1,4 +1,4 @@
-import { IsEnum, IsString, IsUUID } from 'class-validator'
+import { IsEnum, IsOptional, IsString, IsUUID } from 'class-validator'
 
 import { EventType, EventTypeEnum } from '../../../typeorm/entities'
 
@@ -25,8 +25,9 @@ export class EventDto {
 	@IsUUID()
 	placeId!: string
 
+	@IsOptional()
 	@IsString()
-	content!: string
+	content?: string
 
 	@IsString({ each: true })
 	attachedPhotoIds!: string[]

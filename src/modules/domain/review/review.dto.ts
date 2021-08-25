@@ -2,15 +2,15 @@ export class CreateReviewDto {
 	reviewId!: string
 	userId!: string
 	placeId!: string
-	content!: string
-	attachedPhotoIds!: string[]
+	content?: string
+	attachedPhotoIds: string[] = []
 }
 
 export class UpdateReviewDto {
 	reviewId!: string
 	userId!: string
 	placeId!: string
-	content!: string
+	content?: string
 	attachedPhotoIds!: string[]
 }
 
