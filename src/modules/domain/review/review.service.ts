@@ -104,7 +104,10 @@ export class ReviewService {
 		userId: string
 		placeId: string
 	}): Promise<boolean> {
-		const review = await this.reviewRepository.findOne({ userId, placeId })
+		const review = await this.reviewRepository.findOneByUserIdAndPlaceId({
+			userId,
+			placeId,
+		})
 		if (!review) return false
 		return true
 	}
@@ -166,7 +169,7 @@ export class ReviewService {
 	}: {
 		placeId: string
 	}): Promise<boolean> {
-		const review = await this.reviewRepository.findOne({ placeId })
+		const review = await this.reviewRepository.findOneByPlaceId(placeId)
 		return !review
 	}
 }

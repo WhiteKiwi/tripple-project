@@ -44,11 +44,27 @@ export class ReviewRepository {
 		userId,
 		placeId,
 	}: {
-		id?: string
-		userId?: string
-		placeId?: string
+		id: string
+		userId: string
+		placeId: string
 	}) {
-		return await this.reviewRepository.findOne({ id, userId, placeId })
+		return await this.reviewRepository.findOne(id, {
+			where: { userId, placeId },
+		})
+	}
+
+	async findOneByPlaceId(placeId: string) {
+		return await this.reviewRepository.findOne({ placeId })
+	}
+
+	async findOneByUserIdAndPlaceId({
+		userId,
+		placeId,
+	}: {
+		userId: string
+		placeId: string
+	}) {
+		return await this.reviewRepository.findOne({ userId, placeId })
 	}
 
 	async delete(reviewId: string) {
