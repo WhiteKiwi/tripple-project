@@ -19,6 +19,5 @@ export class PointService {
 		amount: number
 	}) {
 		await this.pointRepository.add({ eventType, resourceId, userId, amount })
-		// TODO: redis에 user point 갱신
 	}
 }
