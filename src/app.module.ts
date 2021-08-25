@@ -21,7 +21,7 @@ import { ApplicationModule } from './modules/application/application.module'
 		TypeOrmModule.forRootAsync({
 			imports: [ConfigModule],
 			useFactory: (configService: ConfigService<ConfigEnv>) => ({
-				type: 'postgres',
+				type: 'mysql',
 				host: configService.get('TYPEORM_HOST'),
 				port: +configService.get('TYPEORM_PORT'),
 				database: configService.get('TYPEORM_DATABASE'),

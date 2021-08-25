@@ -1,5 +1,4 @@
 import Joi, { Types as JoiTypes } from 'joi'
-import { isArray } from 'lodash'
 
 import { Environment } from '../lib/types'
 
@@ -45,7 +44,7 @@ function makeJoiSchema({
 	if (allowEmpty) schmea = schmea.empty('')
 
 	// valid value
-	if (isArray(valid)) schmea = schmea.valid(...valid)
+	if (Array.isArray(valid)) schmea = schmea.valid(...valid)
 
 	// 배포 환경에서 필수 여부
 	if (requiredOnDeployment)
