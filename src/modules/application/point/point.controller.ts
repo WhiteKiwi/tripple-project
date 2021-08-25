@@ -1,6 +1,15 @@
-import { Controller, Get, Post } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Post,
+	Query,
+} from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 
+import { AddPointDto, GetPointDto } from './point.dto'
 import { PointApplicationService } from './point.service'
 
 @ApiTags('Point')
@@ -11,8 +20,14 @@ export class PointController {
 	) {}
 
 	@Get()
-	getPoint() {}
+	async getPoint(@Query() getPointDto: GetPointDto) {
+		const point = await this.pointApplicationService.getPoint(getPointDto)
+		return { data: { point } }
+	}
 
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@Post()
-	addPoint() {}
+	async addPoint(@Body() addPointDto: AddPointDto) {
+		const point = await this.pointApplicationService.addPoint(addPointDto)
+	}
 }
