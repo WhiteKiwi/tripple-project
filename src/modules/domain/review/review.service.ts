@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 
+import { PointRepository, PointService } from '@modules/domain'
+
 import { Review } from '../../../typeorm/entities'
-import { PointService } from '../point'
-import { PointRepository } from '../point/point.repository'
 import { CreateReviewDto, DeleteReviewDto, UpdateReviewDto } from './review.dto'
 import { ReviewRepository } from './review.repository'
 

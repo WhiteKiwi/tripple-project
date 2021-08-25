@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
+import { ApplicationModule } from '@modules/application/application.module'
+
 import path from 'path'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import configuration, { ConfigEnv } from './config/configuration'
 import validationSchema from './config/validation-schema'
-import { ApplicationModule } from './modules/application/application.module'
 
 @Module({
 	imports: [

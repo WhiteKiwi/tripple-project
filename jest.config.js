@@ -20,4 +20,10 @@ module.exports = {
 	coverageDirectory: '../coverage',
 	testEnvironment: 'node',
 	testTimeout: 60000,
+	moduleNameMapper: {
+		'@modules/(.*)': '<rootDir>/modules/$1',
+		'@config/(.*)': '<rootDir>/config/$1',
+		'@lib/(.*)': '<rootDir>/lib/$1',
+		'@test/(.*)': '<rootDir>/../test/$1',
+	},
 }

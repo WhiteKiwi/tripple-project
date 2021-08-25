@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 
-import { PointModule } from '../point'
+import { PointModule } from '@modules/domain'
+
 import { ReviewRepository } from './review.repository'
 import { ReviewService } from './review.service'
 

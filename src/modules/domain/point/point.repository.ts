@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { InjectConnection } from '@nestjs/typeorm'
 
-import { RedisService } from 'src/modules/core'
+import { RedisService } from '@modules/core'
+
 import { Connection, Repository } from 'typeorm'
 
 import {

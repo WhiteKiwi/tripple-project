@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 
-import { ReviewModule } from '../../../modules/domain'
+import { ReviewModule } from '@modules/domain'
+
 import { EventController } from './event.controller'
 import { EventService } from './event.service'
 

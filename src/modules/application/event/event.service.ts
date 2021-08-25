@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
 
-import { ReviewService } from '../../domain'
+import { ReviewService } from '@modules/domain'
+
 import { EventDto } from './event.dto'
 
 @Injectable()
