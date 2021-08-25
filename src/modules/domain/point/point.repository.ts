@@ -32,7 +32,7 @@ export class PointRepository {
 		amount,
 	}: {
 		eventType: PointTransactionEventType
-		resourceId: string
+		resourceId?: string
 		userId: string
 		amount: number
 	}) {

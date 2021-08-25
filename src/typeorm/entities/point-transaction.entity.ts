@@ -7,7 +7,8 @@ import {
 } from 'typeorm'
 
 export enum PointTransactionEventTypeEnum {
-	REVIEW = 'REVIEW',
+	REVIEW = 'REVIEW', // 리뷰 작성을 통한 적립
+	DIRECT = 'DIRECT', // API를 통한 적립
 }
 export type PointTransactionEventType =
 	keyof typeof PointTransactionEventTypeEnum
@@ -21,8 +22,8 @@ export class PointTransaction {
 	@Column('enum', { enum: PointTransactionEventTypeEnum })
 	eventType!: PointTransactionEventType
 
-	@Column('uuid', { name: 'resource_id' })
-	resourceId!: string
+	@Column('uuid', { name: 'resource_id', nullable: true })
+	resourceId!: string | null
 
 	@Index('user_id_index')
 	@Column('uuid', { name: 'user_id' })

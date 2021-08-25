@@ -7,6 +7,7 @@ import { PointRepository } from './point.repository'
 @Injectable()
 export class PointService {
 	constructor(private readonly pointRepository: PointRepository) {}
+
 	async add({
 		eventType,
 		resourceId,
@@ -14,7 +15,7 @@ export class PointService {
 		amount,
 	}: {
 		eventType: PointTransactionEventType
-		resourceId: string
+		resourceId?: string
 		userId: string
 		amount: number
 	}) {
