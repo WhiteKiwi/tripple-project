@@ -17,11 +17,16 @@ export default Joi.object({
 		valid: Object.values(Environment),
 		requiredOnDeployment: false,
 	}),
+	// TypeORM
 	TYPEORM_HOST: makeJoiSchema(),
 	TYPEORM_PORT: makeJoiSchema({ type: 'number' }),
 	TYPEORM_DATABASE: makeJoiSchema(),
 	TYPEORM_USERNAME: makeJoiSchema(),
 	TYPEORM_PASSWORD: makeJoiSchema(),
+	// Redis
+	REDIS_HOST: makeJoiSchema(),
+	REDIS_PORT: makeJoiSchema({ type: 'number' }),
+	REDIS_PASSWORD: makeJoiSchema({ allowEmpty: true }),
 })
 
 // Joi schema를 만듬

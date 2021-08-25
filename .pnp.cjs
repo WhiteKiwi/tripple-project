@@ -46,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@nestjs/typeorm", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:8.0.2"],
             ["@sentry/types", "npm:6.11.0"],
             ["@types/express", "npm:4.17.13"],
+            ["@types/ioredis", "npm:4.26.7"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.11"],
             ["@types/supertest", "npm:2.0.11"],
@@ -60,6 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-simple-import-sort", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:7.0.0"],
             ["express", "npm:4.17.1"],
             ["helmet", "npm:4.6.0"],
+            ["ioredis", "npm:4.27.8"],
             ["jest", "npm:26.6.3"],
             ["joi", "npm:17.4.2"],
             ["mysql2", "npm:2.3.0"],
@@ -1720,6 +1722,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-http-cache-semantics-npm-4.0.1-90863c7a3e-1048aacf62.zip/node_modules/@types/http-cache-semantics/",
           "packageDependencies": [
             ["@types/http-cache-semantics", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/ioredis", [
+        ["npm:4.26.7", {
+          "packageLocation": "./.yarn/cache/@types-ioredis-npm-4.26.7-cf43807bbd-1b4918e880.zip/node_modules/@types/ioredis/",
+          "packageDependencies": [
+            ["@types/ioredis", "npm:4.26.7"],
+            ["@types/node", "npm:16.7.1"]
           ],
           "linkType": "HARD",
         }]
@@ -3691,6 +3703,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["clone-response", "npm:1.0.2"],
             ["mimic-response", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["cluster-key-slot", [
+        ["npm:1.1.0", {
+          "packageLocation": "./.yarn/cache/cluster-key-slot-npm-1.1.0-c895b3234e-fc953c7520.zip/node_modules/cluster-key-slot/",
+          "packageDependencies": [
+            ["cluster-key-slot", "npm:1.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -5960,6 +5981,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["ioredis", [
+        ["npm:4.27.8", {
+          "packageLocation": "./.yarn/cache/ioredis-npm-4.27.8-b23bc6662e-5c30e3c411.zip/node_modules/ioredis/",
+          "packageDependencies": [
+            ["ioredis", "npm:4.27.8"],
+            ["cluster-key-slot", "npm:1.1.0"],
+            ["debug", "virtual:4d5b41b4c144bc0f7c0e4c4c2164d0bc5d527811557a2fd7f2ec3307b1cf1ca97f42a730a90b32caada41091b3e922a1e5a2d8c6ff2841b6857305532c68aca8#npm:4.3.2"],
+            ["denque", "npm:1.5.1"],
+            ["lodash.defaults", "npm:4.2.0"],
+            ["lodash.flatten", "npm:4.4.0"],
+            ["lodash.isarguments", "npm:3.1.0"],
+            ["p-map", "npm:2.1.0"],
+            ["redis-commands", "npm:1.7.0"],
+            ["redis-errors", "npm:1.2.0"],
+            ["redis-parser", "npm:3.0.0"],
+            ["standard-as-callback", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["ip", [
         ["npm:1.1.5", {
           "packageLocation": "./.yarn/cache/ip-npm-1.1.5-af36318aa6-30133981f0.zip/node_modules/ip/",
@@ -7250,6 +7291,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["lodash.defaults", [
+        ["npm:4.2.0", {
+          "packageLocation": "./.yarn/cache/lodash.defaults-npm-4.2.0-c5dea025ab-8492325823.zip/node_modules/lodash.defaults/",
+          "packageDependencies": [
+            ["lodash.defaults", "npm:4.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["lodash.flatten", [
+        ["npm:4.4.0", {
+          "packageLocation": "./.yarn/cache/lodash.flatten-npm-4.4.0-495935e617-0ac34a393d.zip/node_modules/lodash.flatten/",
+          "packageDependencies": [
+            ["lodash.flatten", "npm:4.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["lodash.get", [
         ["npm:4.4.2", {
           "packageLocation": "./.yarn/cache/lodash.get-npm-4.4.2-7bda64ed87-e403047ddb.zip/node_modules/lodash.get/",
@@ -7264,6 +7323,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.has-npm-4.5.2-0a10673e08-b3ec829a86.zip/node_modules/lodash.has/",
           "packageDependencies": [
             ["lodash.has", "npm:4.5.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["lodash.isarguments", [
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/lodash.isarguments-npm-3.1.0-9e74d350b8-ae1526f3eb.zip/node_modules/lodash.isarguments/",
+          "packageDependencies": [
+            ["lodash.isarguments", "npm:3.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -8327,6 +8395,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["p-map", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/p-map-npm-2.1.0-d9e865dc7c-9e3ad3c9f6.zip/node_modules/p-map/",
+          "packageDependencies": [
+            ["p-map", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:4.0.0", {
           "packageLocation": "./.yarn/cache/p-map-npm-4.0.0-4677ae07c7-cb0ab21ec0.zip/node_modules/p-map/",
           "packageDependencies": [
@@ -8924,6 +8999,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["rechoir", "npm:0.6.2"],
             ["resolve", "patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redis-commands", [
+        ["npm:1.7.0", {
+          "packageLocation": "./.yarn/cache/redis-commands-npm-1.7.0-528f61f9d8-d1ff7fbcb5.zip/node_modules/redis-commands/",
+          "packageDependencies": [
+            ["redis-commands", "npm:1.7.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redis-errors", [
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/redis-errors-npm-1.2.0-a81fd9b0f1-f28ac26921.zip/node_modules/redis-errors/",
+          "packageDependencies": [
+            ["redis-errors", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redis-parser", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/redis-parser-npm-3.0.0-7ebe40abcb-89290ae530.zip/node_modules/redis-parser/",
+          "packageDependencies": [
+            ["redis-parser", "npm:3.0.0"],
+            ["redis-errors", "npm:1.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -9733,6 +9836,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["standard-as-callback", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/standard-as-callback-npm-2.1.0-8e47620bd4-88bec83ee2.zip/node_modules/standard-as-callback/",
+          "packageDependencies": [
+            ["standard-as-callback", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["static-extend", [
         ["npm:0.1.2", {
           "packageLocation": "./.yarn/cache/static-extend-npm-0.1.2-2720ee6882-8657485b83.zip/node_modules/static-extend/",
@@ -10345,6 +10457,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@nestjs/typeorm", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:8.0.2"],
             ["@sentry/types", "npm:6.11.0"],
             ["@types/express", "npm:4.17.13"],
+            ["@types/ioredis", "npm:4.26.7"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.11"],
             ["@types/supertest", "npm:2.0.11"],
@@ -10359,6 +10472,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-simple-import-sort", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:7.0.0"],
             ["express", "npm:4.17.1"],
             ["helmet", "npm:4.6.0"],
+            ["ioredis", "npm:4.27.8"],
             ["jest", "npm:26.6.3"],
             ["joi", "npm:17.4.2"],
             ["mysql2", "npm:2.3.0"],
@@ -10697,7 +10811,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sqltools/formatter", "npm:1.2.3"],
             ["@types/better-sqlite3", null],
             ["@types/hdb-pool", null],
-            ["@types/ioredis", null],
+            ["@types/ioredis", "npm:4.26.7"],
             ["@types/mongodb", null],
             ["@types/mssql", null],
             ["@types/mysql2", null],
@@ -10719,7 +10833,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:8.6.0"],
             ["glob", "npm:7.1.7"],
             ["hdb-pool", null],
-            ["ioredis", null],
+            ["ioredis", "npm:4.27.8"],
             ["js-yaml", "npm:4.1.0"],
             ["mkdirp", "npm:1.0.4"],
             ["mongodb", null],
