@@ -70,7 +70,28 @@ export class ReviewService {
 		})
 	}
 
-	async delete(deleteReviewDto: DeleteReviewDto) {}
+	async delete(deleteReviewDto: DeleteReviewDto) {
+		const existReview = await this.reviewRepository.findOne({
+			id: deleteReviewDto.reviewId,
+			userId: deleteReviewDto.userId,
+			placeId: deleteReviewDto.placeId,
+		})
+		// TODO: 에러 정리
+		if (!existReview) throw new Error('404')
+
+		// review 삭제
+		await this.reviewRepository.softDelete(deleteReviewDto.reviewId)
+
+		// 포인트 계산
+		const pointAmount = await this.calculatePointAmountAtDeleted(
+			deleteReviewDto,
+		)
+		// 포인트 추가
+		await this.pointService.add({
+			userId: deleteReviewDto.userId,
+			amount: pointAmount,
+		})
+	}
 
 	async checkReviewExist({
 		userId,
@@ -124,6 +145,21 @@ export class ReviewService {
 		)
 			pointAmount -= 1
 		return pointAmount
+	}
+
+	async calculatePointAmountAtDeleted(
+		deleteReviewDto: DeleteReviewDto,
+	): Promise<number> {
+		const pointTransactions =
+			await this.pointService.findTransactionsByReviewId({
+				reviewId: deleteReviewDto.reviewId,
+			})
+		const pointAmount = pointTransactions.reduce(
+			(prev, curr) => prev + curr.amount,
+			0,
+		)
+		// 이 리뷰에 영향을 받은 점수만큼 제거
+		return -pointAmount
 	}
 
 	async nonExistReviewAtThisPlace({
