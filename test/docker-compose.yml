@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  tripple-redis:
+    image: redis:6.0
+    container_name: tripple-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - ../.data/redis/tripple-redis:/data
+    ports:
+      - 6379:6379
+
+  tripple-db:
+    image: mysql:5.7
+    container_name: tripple-mysql
+    environment:
+      - MYSQL_DATABASE=tripple
+      - MYSQL_USER=tripple
+      - MYSQL_PASSWORD=tripple!
+      - MYSQL_ROOT_PASSWORD=tripple!
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - ../.data/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
