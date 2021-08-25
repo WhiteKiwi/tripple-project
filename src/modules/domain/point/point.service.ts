@@ -1,11 +1,24 @@
 import { Injectable } from '@nestjs/common'
 
-import { ReviewPointTransaction } from '../../../typeorm/entities'
+import { PointTransactionEventType } from 'src/typeorm/entities'
+
+import { PointRepository } from './point.repository'
 
 @Injectable()
 export class PointService {
-	async add({ userId, amount }: { userId: string; amount: number }) {
-		// TODO: point transaction 생성
+	constructor(private readonly pointRepository: PointRepository) {}
+	async add({
+		eventType,
+		resourceId,
+		userId,
+		amount,
+	}: {
+		eventType: PointTransactionEventType
+		resourceId: string
+		userId: string
+		amount: number
+	}) {
+		await this.pointRepository.add({ eventType, resourceId, userId, amount })
 		// TODO: redis에 user point 갱신
 	}
 }

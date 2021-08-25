@@ -37,6 +37,8 @@ export class ReviewService {
 
 		// 포인트 추가
 		await this.pointService.add({
+			eventType: 'REVIEW',
+			resourceId: createReviewDto.reviewId,
 			userId: createReviewDto.userId,
 			amount: pointAmount,
 		})
@@ -64,6 +66,8 @@ export class ReviewService {
 
 		// 포인트 추가
 		await this.pointService.add({
+			eventType: 'REVIEW',
+			resourceId: updateReviewDto.reviewId,
 			userId: updateReviewDto.userId,
 			amount: pointAmount,
 		})
@@ -87,6 +91,8 @@ export class ReviewService {
 		)
 		// 포인트 추가
 		await this.pointService.add({
+			eventType: 'REVIEW',
+			resourceId: deleteReviewDto.reviewId,
 			userId: deleteReviewDto.userId,
 			amount: pointAmount,
 		})
