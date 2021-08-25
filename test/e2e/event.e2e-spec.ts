@@ -89,4 +89,40 @@ describe('EventController (e2e)', () => {
 		userPoint = await pointService.getUserPoint(userId)
 		expect(userPoint).toBe(3)
 	})
+
+	it('/ (POST) - delete', async () => {
+		const reviewId = uuid()
+		const userId = uuid()
+		const placeId = uuid()
+		const content = ''
+		const attachedPhotoIds: string[] = []
+		const eventDto: EventDto = {
+			type: 'REVIEW',
+			action: 'ADD',
+			reviewId,
+			userId,
+			placeId,
+			content,
+			attachedPhotoIds,
+		}
+		await request.post('/events').send(eventDto)
+
+		let userPoint = await pointService.getUserPoint(userId)
+		expect(userPoint).toBe(1)
+
+		const modEventDto: EventDto = {
+			type: 'REVIEW',
+			action: 'DELETE',
+			reviewId,
+			userId,
+			placeId,
+			content: 'test',
+			attachedPhotoIds: ['imageIds'],
+		}
+		const response = await request.post('/events').send(modEventDto)
+		expect(response.status).toBe(HttpStatus.NO_CONTENT)
+
+		userPoint = await pointService.getUserPoint(userId)
+		expect(userPoint).toBe(0)
+	})
 })

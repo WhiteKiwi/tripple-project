@@ -22,9 +22,11 @@ export class EventDto {
 	@IsUUID()
 	reviewId!: string
 
+	@IsOptional()
 	@IsUUID()
 	userId!: string
 
+	@IsOptional()
 	@IsUUID()
 	placeId!: string
 
@@ -32,6 +34,7 @@ export class EventDto {
 	@IsString()
 	content?: string
 
+	@IsOptional()
 	@IsString({ each: true })
 	attachedPhotoIds!: string[]
 }

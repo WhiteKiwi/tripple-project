@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
-import { PointTransactionEventType } from 'src/typeorm/entities'
-
+import { PointTransactionEventType } from '../../../typeorm/entities'
 import { PointRepository } from './point.repository'
 
 @Injectable()
