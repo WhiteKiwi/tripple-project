@@ -1,6 +1,9 @@
 import { IsEnum, IsOptional, IsString, IsUUID } from 'class-validator'
 
-import { EventType, EventTypeEnum } from '../../../typeorm/entities'
+export enum EventTypeEnum {
+	REVIEW = 'REVIEW',
+}
+export type EventType = keyof typeof EventTypeEnum
 
 export enum ActionTypeEnum {
 	ADD = 'ADD',

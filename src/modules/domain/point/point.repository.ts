@@ -7,7 +7,6 @@ import { Connection, Repository } from 'typeorm'
 import {
 	PointTransaction,
 	PointTransactionEventType,
-	ReviewPointTransaction,
 } from '../../../typeorm/entities'
 
 @Injectable()
@@ -65,11 +64,19 @@ export class PointRepository {
 		return pointTransactions.reduce((prev, curr) => prev + curr.amount, 0)
 	}
 
-	async findTransactionsByReviewId({
+	async sumPointAffectedByReview({
 		reviewId,
 	}: {
 		reviewId: string
-	}): Promise<ReviewPointTransaction[]> {
-		return []
+	}): Promise<number> {
+		const pointTransactions = await this.pointTransactionRepository.find({
+			resourceId: reviewId,
+			eventType: 'REVIEW',
+		})
+		const pointAmount = pointTransactions.reduce(
+			(prev, curr) => prev + curr.amount,
+			0,
+		)
+		return pointAmount
 	}
 }

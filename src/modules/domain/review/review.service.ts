@@ -155,14 +155,9 @@ export class ReviewService {
 	async calculatePointAmountAtDeleted(
 		deleteReviewDto: DeleteReviewDto,
 	): Promise<number> {
-		const pointTransactions =
-			await this.pointRepository.findTransactionsByReviewId({
-				reviewId: deleteReviewDto.reviewId,
-			})
-		const pointAmount = pointTransactions.reduce(
-			(prev, curr) => prev + curr.amount,
-			0,
-		)
+		const pointAmount = await this.pointRepository.sumPointAffectedByReview({
+			reviewId: deleteReviewDto.reviewId,
+		})
 		// 이 리뷰에 영향을 받은 점수만큼 제거
 		return -pointAmount
 	}
