@@ -21,7 +21,7 @@ export class PointRepository {
 		this.pointTransactionRepository = connection.getRepository(PointTransaction)
 	}
 
-	private getUserPointKey(userId: string) {
+	getUserPointKey(userId: string) {
 		return `user:point:${userId}`
 	}
 

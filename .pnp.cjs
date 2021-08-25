@@ -50,6 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.11"],
             ["@types/supertest", "npm:2.0.11"],
+            ["@types/uuid", "npm:8.3.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:4.29.3"],
             ["@typescript-eslint/parser", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:4.29.3"],
             ["@yarnpkg/pnpify", "npm:3.0.1"],
@@ -77,7 +78,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-node", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:9.1.1"],
             ["tsconfig-paths", "npm:3.11.0"],
             ["typeorm", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:0.2.37"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "SOFT",
         }]
@@ -1946,6 +1948,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-treeify-npm-1.0.0-b5e04e9cd3-1b2397030d.zip/node_modules/@types/treeify/",
           "packageDependencies": [
             ["@types/treeify", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/uuid", [
+        ["npm:8.3.1", {
+          "packageLocation": "./.yarn/cache/@types-uuid-npm-8.3.1-4239b14bac-b41bdc5e86.zip/node_modules/@types/uuid/",
+          "packageDependencies": [
+            ["@types/uuid", "npm:8.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -10461,6 +10472,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.11"],
             ["@types/supertest", "npm:2.0.11"],
+            ["@types/uuid", "npm:8.3.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:4.29.3"],
             ["@typescript-eslint/parser", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:4.29.3"],
             ["@yarnpkg/pnpify", "npm:3.0.1"],
@@ -10488,7 +10500,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-node", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:9.1.1"],
             ["tsconfig-paths", "npm:3.11.0"],
             ["typeorm", "virtual:fa5bc33b0c2e86f5808c2e2951417ec7992ed77297b3a0d64d10b5333fc81ca06deebe97dfc105df3abbb8272435b77f240868b38ee54c5769f2c3fc8c9332bb#npm:0.2.37"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "SOFT",
         }]
