@@ -23,7 +23,7 @@ export class ReviewService {
 		}
 
 		// 포인트 계산
-		const addedAmount = await this.calculatePointAmountAtCreated(
+		const pointAmount = await this.calculatePointAmountAtCreated(
 			createReviewDto,
 		)
 
@@ -39,11 +39,36 @@ export class ReviewService {
 		// 포인트 추가
 		await this.pointService.add({
 			userId: createReviewDto.userId,
-			amount: addedAmount,
+			amount: pointAmount,
 		})
 	}
 
-	async update(updateReviewDto: UpdateReviewDto) {}
+	async update(updateReviewDto: UpdateReviewDto) {
+		const existReview = await this.reviewRepository.findOne({
+			id: updateReviewDto.reviewId,
+			userId: updateReviewDto.userId,
+			placeId: updateReviewDto.placeId,
+		})
+		// TODO: 에러 정리
+		if (!existReview) throw new Error('404')
+
+		// 포인트 계산
+		const pointAmount = await this.calculatePointAmountAtUpdated(
+			existReview,
+			updateReviewDto,
+		)
+
+		// 리뷰 수정
+		existReview.content = updateReviewDto.content || ''
+		existReview.attachedPhotoIds = updateReviewDto.attachedPhotoIds
+		await this.reviewRepository.save(existReview)
+
+		// 포인트 추가
+		await this.pointService.add({
+			userId: updateReviewDto.userId,
+			amount: pointAmount,
+		})
+	}
 
 	async delete(deleteReviewDto: DeleteReviewDto) {}
 
@@ -72,6 +97,32 @@ export class ReviewService {
 			await this.nonExistReviewAtThisPlace({ placeId: createReviewDto.placeId })
 		)
 			pointAmount += 1
+		return pointAmount
+	}
+
+	async calculatePointAmountAtUpdated(
+		existReview: Review,
+		updateReviewDto: UpdateReviewDto,
+	): Promise<number> {
+		let pointAmount = 0
+		// 글자 수 0자 -> 1자 이상 +1
+		if (!existReview.content.length && updateReviewDto.content?.length)
+			pointAmount += 1
+		// 글자 수 1자 이상 -> 0자 -1
+		if (existReview.content.length && !updateReviewDto.content?.length)
+			pointAmount -= 1
+		// 이미지 0개 -> 1개 이상 +1
+		if (
+			!existReview.attachedPhotoIds.length &&
+			updateReviewDto.attachedPhotoIds.length
+		)
+			pointAmount += 1
+		// 이미지 1개 이상 -> 0개 -1
+		if (
+			existReview.attachedPhotoIds.length &&
+			!updateReviewDto.attachedPhotoIds.length
+		)
+			pointAmount -= 1
 		return pointAmount
 	}
 
