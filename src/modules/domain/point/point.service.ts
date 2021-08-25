@@ -21,4 +21,22 @@ export class PointService {
 	}) {
 		await this.pointRepository.add({ eventType, resourceId, userId, amount })
 	}
+
+	async getUserPoint(userId: string) {
+		return await this.pointRepository.getUserPoint(userId)
+	}
+
+	async sumPointAffectedByReview({
+		reviewId,
+	}: {
+		reviewId: string
+	}): Promise<number> {
+		const pointTransactions =
+			await this.pointRepository.findTransactionsByReviewId({ reviewId })
+		const pointAmount = pointTransactions.reduce(
+			(prev, curr) => prev + curr.amount,
+			0,
+		)
+		return pointAmount
+	}
 }

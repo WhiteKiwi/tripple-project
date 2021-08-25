@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
-import { PointRepository, PointService } from '@modules/domain'
+import { PointService } from '@modules/domain'
 
 import { Review } from '../../../typeorm/entities'
 import { CreateReviewDto, DeleteReviewDto, UpdateReviewDto } from './review.dto'
@@ -10,7 +10,6 @@ import { ReviewRepository } from './review.repository'
 export class ReviewService {
 	constructor(
 		private readonly reviewRepository: ReviewRepository,
-		private readonly pointRepository: PointRepository,
 		private readonly pointService: PointService,
 	) {}
 
@@ -155,7 +154,7 @@ export class ReviewService {
 	async calculatePointAmountAtDeleted(
 		deleteReviewDto: DeleteReviewDto,
 	): Promise<number> {
-		const pointAmount = await this.pointRepository.sumPointAffectedByReview({
+		const pointAmount = await this.pointService.sumPointAffectedByReview({
 			reviewId: deleteReviewDto.reviewId,
 		})
 		// 이 리뷰에 영향을 받은 점수만큼 제거

@@ -21,7 +21,7 @@ export class PointRepository {
 		this.pointTransactionRepository = connection.getRepository(PointTransaction)
 	}
 
-	getUserPointKey(userId: string) {
+	private getUserPointKey(userId: string) {
 		return `user:point:${userId}`
 	}
 
@@ -65,19 +65,14 @@ export class PointRepository {
 		return pointTransactions.reduce((prev, curr) => prev + curr.amount, 0)
 	}
 
-	async sumPointAffectedByReview({
+	async findTransactionsByReviewId({
 		reviewId,
 	}: {
 		reviewId: string
-	}): Promise<number> {
-		const pointTransactions = await this.pointTransactionRepository.find({
+	}): Promise<PointTransaction[]> {
+		return await this.pointTransactionRepository.find({
 			resourceId: reviewId,
 			eventType: 'REVIEW',
 		})
-		const pointAmount = pointTransactions.reduce(
-			(prev, curr) => prev + curr.amount,
-			0,
-		)
-		return pointAmount
 	}
 }

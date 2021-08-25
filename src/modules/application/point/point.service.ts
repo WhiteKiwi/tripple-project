@@ -1,18 +1,15 @@
 import { Injectable } from '@nestjs/common'
 
-import { PointRepository, PointService } from '@modules/domain'
+import { PointService } from '@modules/domain'
 
 import { AddPointDto, GetPointDto } from './point.dto'
 
 @Injectable()
 export class PointApplicationService {
-	constructor(
-		private readonly pointService: PointService,
-		private readonly pointRepository: PointRepository,
-	) {}
+	constructor(private readonly pointService: PointService) {}
 
 	async getPoint(getPointDto: GetPointDto): Promise<number> {
-		return await this.pointRepository.getUserPoint(getPointDto.userId)
+		return await this.pointService.getUserPoint(getPointDto.userId)
 	}
 
 	async addPoint(addPointDto: AddPointDto) {

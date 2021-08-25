@@ -8,6 +8,6 @@ import { PointService } from './point.service'
 @Module({
 	imports: [RedisModule],
 	providers: [PointService, PointRepository],
-	exports: [PointService, PointRepository],
+	exports: [PointService],
 })
 export class PointModule {}
