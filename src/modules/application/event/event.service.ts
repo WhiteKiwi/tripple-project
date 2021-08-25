@@ -5,7 +5,7 @@ import { ReviewService } from '@modules/domain'
 import { EventDto } from './event.dto'
 
 @Injectable()
-export class EventService {
+export class EventApplicationService {
 	constructor(private readonly reviewService: ReviewService) {}
 	async handleEvent(eventDto: EventDto) {
 		if (eventDto.action === 'ADD') {
