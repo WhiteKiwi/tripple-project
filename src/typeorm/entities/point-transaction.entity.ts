@@ -29,7 +29,7 @@ export class PointTransaction {
 	@Column('uuid', { name: 'user_id' })
 	userId!: string
 
-	@Column('int', { unsigned: true })
+	@Column('int')
 	amount!: number
 
 	@CreateDateColumn({ name: 'created_at' })

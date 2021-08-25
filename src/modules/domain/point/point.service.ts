@@ -15,6 +15,7 @@ export class PointService {
 		amount,
 	}: {
 		eventType: PointTransactionEventType
+		// TODO: resourceId가 필수인 eventType에 대한 타입 처리 안 됨
 		resourceId?: string
 		userId: string
 		amount: number

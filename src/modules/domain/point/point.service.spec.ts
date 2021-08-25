@@ -50,4 +50,35 @@ describe('PointService', () => {
 
 		expect(userPointAmount).toBe(pointAmount)
 	})
+
+	it('Should return point affected by review', async () => {
+		const userId = uuid()
+		const reviewId = uuid()
+		const pointAmount = 100
+
+		await service.add({
+			eventType: 'REVIEW',
+			resourceId: reviewId,
+			userId,
+			amount: 150,
+		})
+		await service.add({
+			eventType: 'REVIEW',
+			resourceId: reviewId,
+			userId,
+			amount: 50,
+		})
+		await service.add({
+			eventType: 'REVIEW',
+			resourceId: reviewId,
+			userId,
+			amount: -100,
+		})
+
+		const pointAmountAffectedByReview = await service.sumPointAffectedByReview({
+			reviewId,
+		})
+
+		expect(pointAmountAffectedByReview).toBe(pointAmount)
+	})
 })
